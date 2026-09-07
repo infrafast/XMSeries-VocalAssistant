@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "id": "read-exact-channel-level",
+      "text": "Quel est le volume de vocal-clode ?",
+      "expect": {
+        "min_tool_calls": 2,
+        "max_tool_calls": 2,
+        "required_tools": ["osc_find_named_target", "osc_channel_fader"],
+        "forbidden_tools": ["osc_get_mixer_status"],
+        "require_answer": true,
+        "max_latency_ms": 5000,
+        "max_cost_usd": 0.05
+      }
+    },
+    {
+      "id": "read-exact-channel-mute",
+      "text": "Le canal Vocal-Claude est-il coupé ?",
+      "expect": {
+        "min_tool_calls": 2,
+        "max_tool_calls": 2,
+        "required_tools": ["osc_find_named_target", "osc_get_mute"],
+        "forbidden_tools": ["osc_get_mixer_status"],
+        "require_answer": true,
+        "max_latency_ms": 5000,
+        "max_cost_usd": 0.05
+      }
+    },
+    {
+      "id": "read-channel-name-by-index",
+      "text": "Quel est le nom du canal 1 ?",
+      "expect": {
+        "min_tool_calls": 1,
+        "max_tool_calls": 1,
+        "required_tools": ["osc_get_channel_name"],
+        "forbidden_tools": ["osc_get_mixer_status", "osc_find_named_target"],
+        "require_answer": true,
+        "max_latency_ms": 3500,
+        "max_cost_usd": 0.04
+      }
+    }
+  ]
+}
